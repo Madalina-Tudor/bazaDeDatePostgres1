@@ -1,18 +1,13 @@
 package IPDP.bazaDeDatePostgres;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /*methods for performing CRUD (create, read, update, delete) operations on the entity*/
-
+@Repository
 public interface PancreaticCancerRepository extends JpaRepository<PancreaticCancer, String> {
-
-    // find all samples with a given diagnosis
-    List<PancreaticCancer> findByDiagnosis(String status);
-
-
-
 }
 
 

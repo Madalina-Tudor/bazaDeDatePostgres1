@@ -8,7 +8,6 @@ package IPDP.bazaDeDatePostgres;
 that maps to the "Pancreatic_Cancer" table in the database.*/
 
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -16,9 +15,9 @@ import jakarta.persistence.Table;
 import java.util.Objects;
 
 @Entity
-//@Table(name = "pancreatic_cancer")
+@Table(name = "pancreatic_cancer",schema = "public")
 public class PancreaticCancer {
-
+    private String metadata;
     @Id  // primary key is  "sample_id"
    // @Column(name = "sample_id")
     private String sampleId;
@@ -29,7 +28,7 @@ public class PancreaticCancer {
    // @Column(name = "sample_origin")
     private String sampleOrigin;
 
-    private int age;
+    private String age;
 
     private String sex;
 
@@ -41,19 +40,26 @@ public class PancreaticCancer {
     private String benignSampleDiagnosis;
 
    // @Column(name = "plasma_CA19_9")
-    private double plasmaCA199;
+    private String plasma_CA19_9;
 
-    private double creatinine;
+    private String creatinine;
 
-    private double LYVE1;
+    private String LYVE1;
 
-    private double REG1B;
+    private String REG1B;
 
-    private double TFF1;
+    private String TFF1;
 
-    private double REG1A;
+    private String REG1A;
 
 
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
+    }
 
     public String getSampleId() {
         return sampleId;
@@ -79,11 +85,11 @@ public class PancreaticCancer {
         this.sampleOrigin = sampleOrigin;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -119,54 +125,55 @@ public class PancreaticCancer {
         this.benignSampleDiagnosis = benignSampleDiagnosis;
     }
 
-    public double getPlasmaCA199() {
-        return plasmaCA199;
+    public String getPlasma_CA19_9() {
+        return plasma_CA19_9;
     }
 
-    public void setPlasmaCA199(double plasmaCA199) {
-        this.plasmaCA199 = plasmaCA199;
+    public void setPlasma_CA19_9(String plasmaCA199) {
+        this.plasma_CA19_9 = plasmaCA199;
     }
 
-    public double getCreatinine() {
+    public String getCreatinine() {
         return creatinine;
     }
 
-    public void setCreatinine(double creatinine) {
+    public void setCreatinine(String creatinine) {
         this.creatinine = creatinine;
     }
 
-    public double getLYVE1() {
+    public String getLYVE1() {
         return LYVE1;
     }
 
-    public void setLYVE1(double LYVE1) {
+    public void setLYVE1(String LYVE1) {
         this.LYVE1 = LYVE1;
     }
 
-    public double getREG1B() {
+    public String getREG1B() {
         return REG1B;
     }
 
-    public void setREG1B(double REG1B) {
+    public void setREG1B(String REG1B) {
         this.REG1B = REG1B;
     }
 
-    public double getTFF1() {
+    public String getTFF1() {
         return TFF1;
     }
 
-    public void setTFF1(double TFF1) {
+    public void setTFF1(String TFF1) {
         this.TFF1 = TFF1;
     }
 
-    public double getREG1A() {
+    public String getREG1A() {
         return REG1A;
     }
     public PancreaticCancer() {}
 
-    public PancreaticCancer(String sampleId, String patientCohort, String sampleOrigin, int age, String sex,
-                            String diagnosis, String stage, String benignSampleDiagnosis, double plasmaCA199,
-                            double creatinine, double LYVE1, double REG1B, double TFF1, double REG1A) {
+    public PancreaticCancer(String metadata, String sampleId, String patientCohort, String sampleOrigin, String age, String sex,
+                            String diagnosis, String stage, String benignSampleDiagnosis, String plasmaCA199,
+                            String creatinine, String LYVE1, String REG1B, String TFF1, String REG1A) {
+        this.metadata=metadata;
         this.sampleId = sampleId;
         this.patientCohort = patientCohort;
         this.sampleOrigin = sampleOrigin;
@@ -175,7 +182,7 @@ public class PancreaticCancer {
         this.diagnosis = diagnosis;
         this.stage = stage;
         this.benignSampleDiagnosis = benignSampleDiagnosis;
-        this.plasmaCA199 = plasmaCA199;
+        this.plasma_CA19_9 = plasmaCA199;
         this.creatinine = creatinine;
         this.LYVE1 = LYVE1;
         this.REG1B = REG1B;
@@ -183,18 +190,11 @@ public class PancreaticCancer {
         this.REG1A = REG1A;
     }
 
-    // pt sample ID-ca e keye
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PancreaticCancer that = (PancreaticCancer) o;
-        return age == that.age && Double.compare(that.plasmaCA199, plasmaCA199) == 0 && Double.compare(that.creatinine, creatinine) == 0 && Double.compare(that.LYVE1, LYVE1) == 0 && Double.compare(that.REG1B, REG1B) == 0 && Double.compare(that.TFF1, TFF1) == 0 && Double.compare(that.REG1A, REG1A) == 0 && Objects.equals(sampleId, that.sampleId) && Objects.equals(patientCohort, that.patientCohort) && Objects.equals(sampleOrigin, that.sampleOrigin) && Objects.equals(sex, that.sex) && Objects.equals(diagnosis, that.diagnosis) && Objects.equals(stage, that.stage) && Objects.equals(benignSampleDiagnosis, that.benignSampleDiagnosis);
-    }
+    // pt sample ID-ca e key
 
     @Override
     public int hashCode() {
-        return Objects.hash(sampleId, patientCohort, sampleOrigin, age, sex, diagnosis, stage, benignSampleDiagnosis, plasmaCA199, creatinine, LYVE1, REG1B, TFF1, REG1A);
+        return Objects.hash(sampleId, patientCohort, sampleOrigin, age, sex, diagnosis, stage, benignSampleDiagnosis, plasma_CA19_9, creatinine, LYVE1, REG1B, TFF1, REG1A);
     }
     @Override
     public String toString() {
@@ -207,7 +207,7 @@ public class PancreaticCancer {
                 ", diagnosis='" + diagnosis + '\'' +
                 ", stage='" + stage + '\'' +
                 ", benignSampleDiagnosis='" + benignSampleDiagnosis + '\'' +
-                ", plasmaCA199=" + plasmaCA199 +
+                ", plasmaCA199=" + plasma_CA19_9 +
                 ", creatinine=" + creatinine +
                 ", LYVE1=" + LYVE1 +
                 ", REG1B=" + REG1B +
