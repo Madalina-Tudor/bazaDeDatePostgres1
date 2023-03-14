@@ -3,8 +3,12 @@ package IPDP.bazaDeDatePostgres;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
-@SpringBootApplication
+import java.io.IOException;
+import java.io.InputStream;
+
+@SpringBootApplication(scanBasePackages = "IPDP.bazaDeDatePostgres")
 @Component
 public class BazaDeDatePostgresApplication {
 

@@ -19,13 +19,13 @@ import java.util.Objects;
 public class PancreaticCancer {
     private String metadata;
     @Id  // primary key is  "sample_id"
-   // @Column(name = "sample_id")
+    // @Column(name = "sample_id")
     private String sampleId;
 
-  //  @Column(name = "patient_cohort")
+    //  @Column(name = "patient_cohort")
     private String patientCohort;
 
-   // @Column(name = "sample_origin")
+    // @Column(name = "sample_origin")
     private String sampleOrigin;
 
     private String age;
@@ -36,10 +36,10 @@ public class PancreaticCancer {
 
     private String stage;
 
-   // @Column(name = "benign_sample_diagnosis")
+    // @Column(name = "benign_sample_diagnosis")
     private String benignSampleDiagnosis;
 
-   // @Column(name = "plasma_CA19_9")
+    // @Column(name = "plasma_CA19_9")
     private String plasma_CA19_9;
 
     private String creatinine;
@@ -198,42 +198,42 @@ public class PancreaticCancer {
     }
     @Override
     public String toString() {
-        return "PancreaticCancer{" +
-                "sampleId='" + sampleId + '\'' +
-                ", patientCohort='" + patientCohort + '\'' +
-                ", sampleOrigin='" + sampleOrigin + '\'' +
-                ", age=" + age +
-                ", sex='" + sex + '\'' +
-                ", diagnosis='" + diagnosis + '\'' +
-                ", stage='" + stage + '\'' +
-                ", benignSampleDiagnosis='" + benignSampleDiagnosis + '\'' +
-                ", plasmaCA199=" + plasma_CA19_9 +
-                ", creatinine=" + creatinine +
-                ", LYVE1=" + LYVE1 +
-                ", REG1B=" + REG1B +
-                ", TFF1=" + TFF1 +
-                ", REG1A=" + REG1A +
-                '}';
+        return "{\"@id\":'" + sampleId + '\'' +
+                ", \"patient_cohort\":\"" + patientCohort + '\"' +
+                ", \"sample_origin\":\"" + sampleOrigin + '\"' +
+                ", \"age\":\"" + age + '\"'+
+                ", \"sex\":\"" + sex + '\"' +
+                ", \"diagnosis\":\"" + diagnosis+'\"' +
+                ", \"stage\":\"" + stage + '\"' +
+                ", \"benign_sample_diagnosis\":\"" + benignSampleDiagnosis + '\"' +
+                ", \"plasma_CA19_9\":\"" + plasma_CA19_9 + '\"' +
+                ", \"creatinine\":\"" + creatinine +'\"'+
+                ", \"LYVE1\":\"" + LYVE1+'\"' +
+                ", \"REG1B\":\"" + REG1B+'\"' +
+                ", \"TFF1\":\"" + TFF1+'\"' +
+                ", \"REG1A\":\"" + REG1A+'\"' + "}";
     }
 
-
-
-
-
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PancreaticCancer that = (PancreaticCancer) o;
+        return Objects.equals(metadata, that.metadata) && Objects.equals(sampleId, that.sampleId) && Objects.equals(patientCohort, that.patientCohort) && Objects.equals(sampleOrigin, that.sampleOrigin) && Objects.equals(age, that.age) && Objects.equals(sex, that.sex) && Objects.equals(diagnosis, that.diagnosis) && Objects.equals(stage, that.stage) && Objects.equals(benignSampleDiagnosis, that.benignSampleDiagnosis) && Objects.equals(plasma_CA19_9, that.plasma_CA19_9) && Objects.equals(creatinine, that.creatinine) && Objects.equals(LYVE1, that.LYVE1) && Objects.equals(REG1B, that.REG1B) && Objects.equals(TFF1, that.TFF1) && Objects.equals(REG1A, that.REG1A);
+    }
 }// end_class
 
 // Add getters and setters for the fields
-    //
+//
 
-    // Add a constructor that takes in all the fields as arguments
-    // ...
+// Add a constructor that takes in all the fields as arguments
+// ...
 
-    // Add a no-argument constructor (required by JPA)
+// Add a no-argument constructor (required by JPA)
 
 
-    // Add a toString() method for debugging
-    // ...
+// Add a toString() method for debugging
+// ...
 
 /*This entity class represents a row in the Pancreatic_Cancer table in the database,
 with each instance of this class representing a single row of data in the table.
