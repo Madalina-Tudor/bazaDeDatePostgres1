@@ -9,11 +9,12 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @SpringBootApplication(scanBasePackages = "IPDP.bazaDeDatePostgres")
-@Component
 public class BazaDeDatePostgresApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(BazaDeDatePostgresApplication.class, args);
+		//pus date in baza de date
 	}
 
 }

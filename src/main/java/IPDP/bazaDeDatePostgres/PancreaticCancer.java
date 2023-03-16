@@ -12,6 +12,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 @Entity
@@ -191,6 +192,26 @@ public class PancreaticCancer {
     }
 
     // pt sample ID-ca e key
+    public ArrayList<String> getProperties()
+    {
+        ArrayList<String> props = new ArrayList<>();
+        props.add(this.metadata);
+        props.add(this.age);
+        props.add(this.LYVE1);
+        props.add(this.stage);
+        props.add(this.metadata);
+        props.add(this.sex);
+        props.add(this.creatinine);
+        props.add(this.benignSampleDiagnosis);
+        props.add(this.diagnosis);
+        props.add(this.patientCohort);
+        props.add(this.plasma_CA19_9);
+        props.add(this.REG1A);
+        props.add(this.REG1B);
+        props.add(this.sampleId);
+        props.add(this.TFF1);
+        return props;
+    }
 
     @Override
     public int hashCode() {

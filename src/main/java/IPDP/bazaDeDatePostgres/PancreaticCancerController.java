@@ -4,24 +4,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.*;
+import java.util.*;
+
 @RestController
-@RequestMapping("/pancreatic_cancer")
+@RequestMapping("")
 public class PancreaticCancerController {
-
-
-
     @Autowired
-    private final PancreaticCancerRepository pancreaticCancerRepository;
+    private PancreaticCancerService pancreaticCancerService;
 
-    public PancreaticCancerController(PancreaticCancerRepository pancreaticCancerRepository) {
-        this.pancreaticCancerRepository = pancreaticCancerRepository;
-    }
-
-    @GetMapping
-    public ResponseEntity getAllPancreaticCancer()
+    @GetMapping("/get_data")
+    public String getAllPancreaticCancer(@RequestParam("data_type") String dataType
+            , @RequestParam("snippet") Boolean snippet)
     {
-        return ResponseEntity.ok(this.pancreaticCancerRepository.findAll());
+        return pancreaticCancerService.getJSONLd(snippet);
     }
+
+    @GetMapping("/put_data")
+    public void saveData() throws IOException {
+        ArrayList<PancreaticCancer> pancreaticCancerArrayList = new ArrayList<>();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("data-1678080671318.csv"));
+        String line = "";
+        String[] props = null;
+        while((line = bufferedReader.readLine())!= null)
+        {
+            props = line.split(",");
+            PancreaticCancer pancreaticCancer = new PancreaticCancer(props[0],props[1],props[2],props[3],props[4]
+                    ,props[5],props[6],props[7],props[8],props[9],props[10],props[11],props[12],props[13],props[14]);
+            pancreaticCancerArrayList.add(pancreaticCancer);
+        }
+        bufferedReader.close();
+
+        //pancreaticCancerRepository.saveAll(pancreaticCancerArrayList);
+        //this.pancreaticCancerRepository.saveAll(new ArrayList<PancreaticCancer>());
+                //luat date, pus cu saveAll -> descjid app si pun endpoint ul asta
+    }
+
+
 //
 //    @GetMapping("/{sample_id}")
 //    public ResponseEntity<PancreaticCancer> findById(@PathVariable String id) {
