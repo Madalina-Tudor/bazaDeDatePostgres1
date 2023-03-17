@@ -19,21 +19,17 @@ public class PancreaticCancerService {
 
     public String getJSONLd(Boolean snippet)
     {
+        System.out.println("Executed");
         ArrayList<PancreaticCancer> dataList = new ArrayList<>();
-        if(!snippet)
-        {
-            for(PancreaticCancer pancreaticCancer:this.getPancreaticCancer())
-            {
+        if(!snippet) {
+            for(PancreaticCancer pancreaticCancer:this.getPancreaticCancer()) {
                 int counter = 0;
-                for(String prop: pancreaticCancer.getProperties())
-                {
-                    if(prop.equals("NULL"))
-                    {
+                for(String prop: pancreaticCancer.getProperties()) {
+                    if(prop.equals("NULL")) {
                         counter++;
                     }
                 }
-
-                if(counter<5){
+                if(counter<5){ //dinamic
                     dataList.add(pancreaticCancer);
                 }
             }
